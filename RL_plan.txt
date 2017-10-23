@@ -1,0 +1,76 @@
+from ReplayMemory import ReplayMemory
+
+class env:
+    # Description of the environment
+    MAX_ACTION = 0.01
+    SPACE = ((0,0), (5,5))
+
+    def __init__(self):
+        self.pos
+        self.vel
+        self.accel
+        self.goal
+        self.counter = 0
+        self.targetUpdatefreq = 100 # after how long to update target
+
+    def updateEnv(self):
+        self.pos += self.vel
+        self.vel = damping*self.vel + self.accel
+        self.counter += 1
+        if self.counter % self.targetUpdatefreq == 0:
+            self.counter = 0 # reset counter
+            self.target = random.randn(2) # choose random location !!
+        # END
+
+    def getPos(self): return self.pos
+
+    def getVel(self): return self.vel
+
+    def getTarget(self): return self.target
+
+class RL:
+    # Reinforcement Learning model
+    # takes from environment and samples states value functions etc.
+    def __init__(self):
+        self.gamma = gamma; # future reward discount factor
+        self.eps = eps; # for epsilon-greedy policy
+
+    def startState(self): raise NotImplementedError("Override me")
+
+    def actions(self):
+        # return actions available
+        raise NotImplementedError("Override me")
+
+    def nextState(self, state, action):
+
+    def Prob(self, state, action, newState):
+
+    def Reward(self, state, action, newState):
+        if newState == target: return 100
+        return -1
+
+    def approxQfunc(self, state, action):
+        # call feedforward of neural network
+
+class RLAlgorithm:
+    # Inherits from RL
+    # Solving functions like learning etc.
+    # Is it needed ???
+
+    # experience data
+    # call for Q-learning (weight update, by passing data):
+        # which calls network
+
+    # policy updates
+    # give action
+    # set self.pi and self.Q
+
+
+class network:
+    # Build a network for Q-learning
+    # train
+    # return result of feedforward
+
+
+
+# Seems good structure
