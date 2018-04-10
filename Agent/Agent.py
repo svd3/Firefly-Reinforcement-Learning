@@ -32,7 +32,7 @@ class Agent():
 
         #self.transition = namedtuple('transition', ('state', 'action', 'next_state', 'reward'))
 
-    def epsilon_update(self, eps_decay = 1.0/50):
+    def epsilon_update(self, eps_decay=1.0/50):
         self.epsilon = self.base_epsilon * np.exp(-self.steps * eps_decay)
         self.steps += 1
 
@@ -53,7 +53,7 @@ class Agent():
     def reinforce(self, epochs=100):
         self.QNet.learn(self.batch, epochs)
 
-    def set_batch_size(self, batch_size = BATCH_SIZE):
+    def set_batch_size(self, batch_size=BATCH_SIZE):
         self.batch_size = batch_size
 
     """def append(self, experience):
